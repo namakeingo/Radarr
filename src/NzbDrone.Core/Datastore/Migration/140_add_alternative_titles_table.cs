@@ -8,7 +8,7 @@ namespace NzbDrone.Core.Datastore.Migration
     {
         protected override void MainDbUpgrade()
         {
-            if (!Schema.Schema("dbo").Table("alternative_titles").Exists())
+            if (!Schema.Table("alternative_titles").Exists())
             {
                 Create.TableForModel("AlternativeTitles")
                       .WithColumn("MovieId").AsInt64().NotNullable()

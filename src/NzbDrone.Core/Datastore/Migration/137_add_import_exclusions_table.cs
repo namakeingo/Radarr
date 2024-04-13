@@ -13,10 +13,10 @@ namespace NzbDrone.Core.Datastore.Migration
     {
         protected override void MainDbUpgrade()
         {
-            if (!Schema.Schema("dbo").Table("ImportExclusions").Exists())
+            if (!Schema.Table("ImportExclusions").Exists())
             {
                 Create.TableForModel("ImportExclusions")
-                    .WithColumn("TmdbId").AsInt64().NotNullable().Unique().PrimaryKey()
+                    .WithColumn("TmdbId").AsInt64().NotNullable().Unique()
                     .WithColumn("MovieTitle").AsString().Nullable()
                     .WithColumn("MovieYear").AsInt64().Nullable().WithDefaultValue(0);
             }
